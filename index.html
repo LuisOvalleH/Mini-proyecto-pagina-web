@@ -2,149 +2,143 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sistema de gestión y reservación de aulas universitarias">
-    <meta name="author" content="Nombre de la Universidad">
-    <title>Sistema de Reservación de Aulas | Universidad</title>
+    <title>Gestión de Espacios | Politécnico Universitario</title>
 </head>
 <body>
 
     <header>
-        <h1>Sistema de Reservación de Aulas</h1>
-        <p><strong>Universidad Nacional Autónoma</strong></p>
-        
-        <aside>
-            <p>Bienvenido/a: <strong>Juan Pérez</strong> | Rol: <em>Estudiante</em></p>
-        </aside>
+        <img src="campus-quetzaltenango-1600x651.jpg" alt="Logotipo Institucional" height="300" width="700">
+        <h1>Sistema de Control de Aulas (SCA)</h1>
+        <p><strong>Institución:</strong> UNIVERSIDAD RAFAEL LANDIVAR </p>
+        <hr>
+        <p align="right">
+            Usuario: <code>admin_estudiante_2024</code> <br>
+            <small>Estado: Conectado vía Portal Académico</small>
+        </p>
     </header>
-    <hr>
 
     <nav>
-        <ul>
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#listado-aulas">Aulas</a></li>
-            <li><a href="#formulario-reserva">Reservar Aula</a></li>
-            <li><a href="#mis-reservas">Mis Reservas</a></li>
-            <li><a href="#administracion">Administración</a></li>
-        </ul>
+        <strong>Menú de Navegación:</strong> [ 
+        <a href="#dash">Resumen</a> | 
+        <a href="#aulas">Ver Aulas</a> | 
+        <a href="#reserva">Nueva Solicitud</a> | 
+        <a href="#historial">Mis Registros</a> | 
+        <a href="#admin">Panel Admin</a> ]
     </nav>
-    <hr>
-    <main id="inicio">
 
-        <section>
-            <h2>Descripción del Sistema</h2>
-            <p>
-                El sistema de reservación de aulas universitarias tiene como finalidad apoyar la
-                administración eficiente de los espacios académicos de la universidad. Permite
-                consultar la disponibilidad de aulas, realizar reservaciones y llevar un control
-                organizado de los horarios asignados, contribuyendo a una mejor planificación
-                académica.
-            </p>
+    <main>
+        <section id="dash">
+            <fieldset>
+                <legend><h3>Estado del Sistema (Dashboard)</h3></legend>
+                <dl>
+                    <dt><strong>Aulas en servicio:</strong></dt>
+                    <dd>Actualmente hay 24 espacios registrados.</dd>
+                    
+                    <dt><strong>Disponibilidad inmediata:</strong></dt>
+                    <dd>8 espacios libres para reservación.</dd>
+
+                    <dt><strong>Reservas en curso:</strong></dt>
+                    <dd>16 aulas ocupadas en este bloque horario.</dd>
+                </dl>
+            </fieldset>
         </section>
 
-        <hr>
+        <section id="aulas">
+            <h3>Catálogo de Espacios Disponibles</h3>
+            <p><small>Haz clic en cada aula para ver detalles:</small></p>
+            
+            <details>
+                <summary><strong>Aula B-201 (Teórica)</strong> - Estado: Disponible</summary>
+                <ul>
+                    <li>Capacidad: 50 Personas</li>
+                    <li>Equipamiento: Proyector, Aire Acondicionado</li>
+                </ul>
+            </details>
 
-        <section>
-            <h2>Resumen General</h2>
-            <ul>
-                <li>Aulas disponibles: <strong>10</strong></li>
-                <li>Reservas activas: <strong>4</strong></li>
-            </ul>
+            <details>
+                <summary><strong>Lab. Química Central</strong> - Estado: Ocupado</summary>
+                <ul>
+                    <li>Capacidad: 20 Personas</li>
+                    <li>Equipamiento: Extractores, Mecheros, Gas</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary><strong>Auditorio de Artes</strong> - Estado: Disponible</summary>
+                <ul>
+                    <li>Capacidad: 120 Personas</li>
+                    <li>Equipamiento: Sistema de Audio, Luces LED</li>
+                </ul>
+            </details>
         </section>
 
-        <hr>
-
-        <section id="listado-aulas">
-            <h2>Listado de Aulas</h2>
-
-            <article>
-                <h3>Aula A-101</h3>
-                <p>Capacidad: 40 estudiantes</p>
-                <p>Tipo: Aula teórica</p>
-                <p>Estado: Disponible</p>
-            </article>
-
-            <article>
-                <h3>Aula B-203</h3>
-                <p>Capacidad: 35 estudiantes</p>
-                <p>Tipo: Aula teórica</p>
-                <p>Estado: Ocupada</p>
-            </article>
-
-            <article>
-                <h3>Laboratorio L-305</h3>
-                <p>Capacidad: 25 estudiantes</p>
-                <p>Tipo: Laboratorio de computación</p>
-                <p>Estado: Disponible</p>
-            </article>
-        </section>
-
-        <hr>
-
-        <section id="formulario-reserva">
-            <h2>Reservar Aula</h2>
-
-            <form action="#" method="post">
-                <label for="aula">Aula:</label><br>
-                <select id="aula" name="aula">
-                    <option value="A-101">Aula A-101</option>
-                    <option value="B-203">Aula B-203</option>
-                    <option value="L-305">Laboratorio L-305</option>
-                </select>
-
-                <br><br>
-
-                <label for="fecha">Fecha:</label><br>
-                <input type="date" id="fecha" name="fecha">
-
-                <br><br>
-
-                <label for="hora">Hora:</label><br>
-                <input type="time" id="hora" name="hora">
-
-                <br><br>
-
-                <button type="submit">Reservar Aula</button>
+        <section id="reserva">
+            <h3>Solicitud de Apartado de Aula</h3>
+            <form>
+                <table border="0">
+                    <tr>
+                        <td><label for="aula">Seleccionar espacio:</label></td>
+                        <td>
+                            <select id="aula" name="aula">
+                                <optgroup label="Aulas Teóricas">
+                                    <option>Aula B-201</option>
+                                    <option>Aula B-202</option>
+                                </optgroup>
+                                <optgroup label="Laboratorios">
+                                    <option>Lab. Química Central</option>
+                                </optgroup>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="fecha">Fecha del evento:</label></td>
+                        <td><input type="date" id="fecha" name="fecha"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="hora">Hora de inicio:</label></td>
+                        <td><input type="time" id="hora" name="hora"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <br>
+                            <input type="submit" value="Registrar Reserva Oficial">
+                        </td>
+                    </tr>
+                </table>
             </form>
         </section>
 
-        <hr>
-
-        <section id="mis-reservas">
-            <h2>Mis Reservas</h2>
-
-            <article>
-                <p><strong>Aula:</strong> Aula A-101</p>
-                <p><strong>Fecha:</strong> 20/03/2026</p>
-                <p><strong>Horario:</strong> 08:00 - 10:00</p>
-            </article>
-
-            <article>
-                <p><strong>Aula:</strong> Laboratorio L-305</p>
-                <p><strong>Fecha:</strong> 22/03/2026</p>
-                <p><strong>Horario:</strong> 14:00 - 16:00</p>
-            </article>
+        <section id="historial">
+            <h3>Mis Reservas Realizadas</h3>
+            <table border="1" width="100%" cellpadding="5">
+                <thead bgcolor="#eeeeee">
+                    <tr>
+                        <th>ID Ticket</th>
+                        <th>Espacio / Aula</th>
+                        <th>Fecha Programada</th>
+                        <th>Bloque Horario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#8821</td>
+                        <td>Aula B-201</td>
+                        <td>25/01/2026</td>
+                        <td>08:00 - 10:00</td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
-
-        <hr>
-
-        <section id="administracion">
-            <h2>Administración</h2>
-            <ul>
-                <li>Gestión de aulas</li>
-                <li>Control de horarios</li>
-                <li>Supervisión de reservaciones</li>
-            </ul>
-        </section>
-
     </main>
 
+    <hr>
     <footer>
-        <p>Universidad Nacional Autónoma</p>
-        <p>Sistema académico para la administración de aulas universitarias</p>
-        <p>Año 2026</p>
+        <p>
+            <strong>© 2026 Dirección de Tecnologías de la Información</strong><br>
+            Unidad de Gestión de Infraestructura Universitaria<br>
+            <em>Proyecto de Simulación Académica - Desarrollo Web I</em>
+        </p>
     </footer>
-
 
 </body>
 </html>
