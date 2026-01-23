@@ -29,6 +29,122 @@
         </ul>
     </nav>
     <hr>
+    <main id="inicio">
+
+        <section>
+            <h2>Descripción del Sistema</h2>
+            <p>
+                El sistema de reservación de aulas universitarias tiene como finalidad apoyar la
+                administración eficiente de los espacios académicos de la universidad. Permite
+                consultar la disponibilidad de aulas, realizar reservaciones y llevar un control
+                organizado de los horarios asignados, contribuyendo a una mejor planificación
+                académica.
+            </p>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Resumen General</h2>
+            <ul>
+                <li>Aulas disponibles: <strong>10</strong></li>
+                <li>Reservas activas: <strong>4</strong></li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section id="listado-aulas">
+            <h2>Listado de Aulas</h2>
+
+            <article>
+                <h3>Aula A-101</h3>
+                <p>Capacidad: 40 estudiantes</p>
+                <p>Tipo: Aula teórica</p>
+                <p>Estado: Disponible</p>
+            </article>
+
+            <article>
+                <h3>Aula B-203</h3>
+                <p>Capacidad: 35 estudiantes</p>
+                <p>Tipo: Aula teórica</p>
+                <p>Estado: Ocupada</p>
+            </article>
+
+            <article>
+                <h3>Laboratorio L-305</h3>
+                <p>Capacidad: 25 estudiantes</p>
+                <p>Tipo: Laboratorio de computación</p>
+                <p>Estado: Disponible</p>
+            </article>
+        </section>
+
+        <hr>
+
+        <section id="formulario-reserva">
+            <h2>Reservar Aula</h2>
+
+            <form action="#" method="post">
+                <label for="aula">Aula:</label><br>
+                <select id="aula" name="aula">
+                    <option value="A-101">Aula A-101</option>
+                    <option value="B-203">Aula B-203</option>
+                    <option value="L-305">Laboratorio L-305</option>
+                </select>
+
+                <br><br>
+
+                <label for="fecha">Fecha:</label><br>
+                <input type="date" id="fecha" name="fecha">
+
+                <br><br>
+
+                <label for="hora">Hora:</label><br>
+                <input type="time" id="hora" name="hora">
+
+                <br><br>
+
+                <button type="submit">Reservar Aula</button>
+            </form>
+        </section>
+
+        <hr>
+
+        <section id="mis-reservas">
+            <h2>Mis Reservas</h2>
+
+            <article>
+                <p><strong>Aula:</strong> Aula A-101</p>
+                <p><strong>Fecha:</strong> 20/03/2026</p>
+                <p><strong>Horario:</strong> 08:00 - 10:00</p>
+            </article>
+
+            <article>
+                <p><strong>Aula:</strong> Laboratorio L-305</p>
+                <p><strong>Fecha:</strong> 22/03/2026</p>
+                <p><strong>Horario:</strong> 14:00 - 16:00</p>
+            </article>
+        </section>
+
+        <hr>
+
+        <section id="administracion">
+            <h2>Administración</h2>
+            <ul>
+                <li>Gestión de aulas</li>
+                <li>Control de horarios</li>
+                <li>Supervisión de reservaciones</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Universidad Nacional Autónoma</p>
+        <p>Sistema académico para la administración de aulas universitarias</p>
+        <p>Año 2026</p>
+    </footer>
+
 
 </body>
 </html>
