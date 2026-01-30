@@ -2,143 +2,267 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Gestión de Espacios | Politécnico Universitario</title>
+    <title>Gestión de Espacios | Universidad Rafael Landívar</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #efe771;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            background-color: #efe771;
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        h3 {
+            color: #efe771;
+            margin-top: 0;
+        }
+
+        fieldset {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        legend {
+            font-weight: bold;
+            color: #efe771;
+        }
+
+        details {
+            background-color: #f9f9f9;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        details summary {
+            font-weight: bold;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th {
+            background-color: #e5e239;
+            color: white;
+            padding: 10px;
+        }
+
+        table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        form table td {
+            padding: 8px;
+        }
+
+        select, input[type="date"], input[type="time"] {
+            padding: 6px;
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            background-color: #efe771;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #efe771;
+        }
+
+        footer {
+            background-color: #2e2e2e;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+        }
+
+        .usuario {
+            text-align: right;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
+
 <body>
 
-    <header>
-        <img src="campus-quetzaltenango-1600x651.jpg" alt="Logotipo Institucional" height="300" width="700">
-        <h1>Sistema de Control de Aulas (SCA)</h1>
-        <p><strong>Institución:</strong> UNIVERSIDAD RAFAEL LANDIVAR </p>
-        <hr>
-        <p align="right">
-            Usuario: <code>admin_estudiante_2024</code> <br>
-            <small>Estado: Conectado vía Portal Académico</small>
-        </p>
-    </header>
+<header>
+    <img src="campus-quetzaltenango-1600x651.jpg" alt="Campus Quetzaltenango">
+    <h1>Sistema de Control de Aulas (SCA)</h1>
+    <p><strong>Universidad Rafael Landívar – Campus Quetzaltenango</strong></p>
 
-    <nav>
-        <strong>Menú de Navegación:</strong> [ 
-        <a href="#dash">Resumen</a> | 
-        <a href="#aulas">Ver Aulas</a> | 
-        <a href="#reserva">Nueva Solicitud</a> | 
-        <a href="#historial">Mis Registros</a> | 
-        <a href="#admin">Panel Admin</a> ]
-    </nav>
+    <div class="usuario">
+        Usuario: <code>admin_estudiante_2024</code><br>
+        Estado: Conectado vía Portal Académico
+    </div>
+</header>
 
-    <main>
-        <section id="dash">
-            <fieldset>
-                <legend><h3>Estado del Sistema (Dashboard)</h3></legend>
-                <dl>
-                    <dt><strong>Aulas en servicio:</strong></dt>
-                    <dd>Actualmente hay 24 espacios registrados.</dd>
-                    
-                    <dt><strong>Disponibilidad inmediata:</strong></dt>
-                    <dd>8 espacios libres para reservación.</dd>
+<nav>
+    <a href="#dash">Resumen</a>
+    <a href="#aulas">Ver Aulas</a>
+    <a href="#reserva">Nueva Solicitud</a>
+    <a href="#historial">Mis Registros</a>
+    <a href="#admin">Panel Admin</a>
+</nav>
 
-                    <dt><strong>Reservas en curso:</strong></dt>
-                    <dd>16 aulas ocupadas en este bloque horario.</dd>
-                </dl>
-            </fieldset>
-        </section>
+<main>
 
-        <section id="aulas">
-            <h3>Catálogo de Espacios Disponibles</h3>
-            <p><small>Haz clic en cada aula para ver detalles:</small></p>
-            
-            <details>
-                <summary><strong>Aula B-201 (Teórica)</strong> - Estado: Disponible</summary>
-                <ul>
-                    <li>Capacidad: 50 Personas</li>
-                    <li>Equipamiento: Proyector, Aire Acondicionado</li>
-                </ul>
-            </details>
+    <section id="dash">
+        <fieldset>
+            <legend>Estado del Sistema</legend>
+            <p><strong>Aulas en servicio:</strong> 24 espacios registrados</p>
+            <p><strong>Disponibilidad inmediata:</strong> 8 aulas libres</p>
+            <p><strong>Reservas activas:</strong> 16 aulas ocupadas</p>
+        </fieldset>
+    </section>
 
-            <details>
-                <summary><strong>Lab. Química Central</strong> - Estado: Ocupado</summary>
-                <ul>
-                    <li>Capacidad: 20 Personas</li>
-                    <li>Equipamiento: Extractores, Mecheros, Gas</li>
-                </ul>
-            </details>
+    <section id="aulas">
+        <h3>Catálogo de Espacios</h3>
 
-            <details>
-                <summary><strong>Auditorio de Artes</strong> - Estado: Disponible</summary>
-                <ul>
-                    <li>Capacidad: 120 Personas</li>
-                    <li>Equipamiento: Sistema de Audio, Luces LED</li>
-                </ul>
-            </details>
-        </section>
+        <details>
+            <summary>Aula B-201 (Teórica) – Disponible</summary>
+            <ul>
+                <li>Capacidad: 50 personas</li>
+                <li>Equipamiento: Proyector, Aire acondicionado</li>
+            </ul>
+        </details>
 
-        <section id="reserva">
-            <h3>Solicitud de Apartado de Aula</h3>
-            <form>
-                <table border="0">
-                    <tr>
-                        <td><label for="aula">Seleccionar espacio:</label></td>
-                        <td>
-                            <select id="aula" name="aula">
-                                <optgroup label="Aulas Teóricas">
-                                    <option>Aula B-201</option>
-                                    <option>Aula B-202</option>
-                                </optgroup>
-                                <optgroup label="Laboratorios">
-                                    <option>Lab. Química Central</option>
-                                </optgroup>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label for="fecha">Fecha del evento:</label></td>
-                        <td><input type="date" id="fecha" name="fecha"></td>
-                    </tr>
-                    <tr>
-                        <td><label for="hora">Hora de inicio:</label></td>
-                        <td><input type="time" id="hora" name="hora"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <br>
-                            <input type="submit" value="Registrar Reserva Oficial">
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </section>
+        <details>
+            <summary>Laboratorio de Química Central – Ocupado</summary>
+            <ul>
+                <li>Capacidad: 20 personas</li>
+                <li>Equipamiento: Extractores, Mecheros, Gas</li>
+            </ul>
+        </details>
 
-        <section id="historial">
-            <h3>Mis Reservas Realizadas</h3>
-            <table border="1" width="100%" cellpadding="5">
-                <thead bgcolor="#eeeeee">
-                    <tr>
-                        <th>ID Ticket</th>
-                        <th>Espacio / Aula</th>
-                        <th>Fecha Programada</th>
-                        <th>Bloque Horario</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>#8821</td>
-                        <td>Aula B-201</td>
-                        <td>25/01/2026</td>
-                        <td>08:00 - 10:00</td>
-                    </tr>
-                </tbody>
+        <details>
+            <summary>Auditorio de Artes – Disponible</summary>
+            <ul>
+                <li>Capacidad: 120 personas</li>
+                <li>Equipamiento: Audio profesional, Luces LED</li>
+            </ul>
+        </details>
+    </section>
+
+    <section id="reserva">
+        <h3>Solicitud de Reserva de Aula</h3>
+
+        <form>
+            <table>
+                <tr>
+                    <td>Espacio:</td>
+                    <td>
+                        <select>
+                            <option>Aula B-201</option>
+                            <option>Aula B-202</option>
+                            <option>Laboratorio de Química</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Fecha:</td>
+                    <td><input type="date"></td>
+                </tr>
+
+                <tr>
+                    <td>Hora inicio:</td>
+                    <td><input type="time"></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" style="text-align:center">
+                        <input type="submit" value="Registrar Reserva">
+                    </td>
+                </tr>
             </table>
-        </section>
-    </main>
+        </form>
+    </section>
 
-    <hr>
-    <footer>
-        <p>
-            <strong>© 2026 Dirección de Tecnologías de la Información</strong><br>
-            Unidad de Gestión de Infraestructura Universitaria<br>
-            <em>Proyecto de Simulación Académica - Desarrollo Web I</em>
-        </p>
-    </footer>
+    <section id="historial">
+        <h3>Historial de Reservas</h3>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Aula</th>
+                <th>Fecha</th>
+                <th>Horario</th>
+            </tr>
+            <tr>
+                <td>#8821</td>
+                <td>Aula B-201</td>
+                <td>25/01/2026</td>
+                <td>08:00 - 10:00</td>
+            </tr>
+        </table>
+    </section>
+
+</main>
+
+<footer>
+    © 2026 Dirección de Tecnologías de la Información<br>
+    Unidad de Gestión de Infraestructura Universitaria<br>
+    <em>Proyecto Académico – Programación Web </em>
+</footer>
 
 </body>
 </html>
