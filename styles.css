@@ -1,0 +1,557 @@
+﻿:root {
+            --navy-900: #111c4e;
+            --navy-700: #24347f;
+            --slate-900: #1f2937;
+            --slate-700: #475467;
+            --slate-500: #667085;
+            --slate-200: #d0d5dd;
+            --surface: #ffffff;
+            --bg: #f5f7fb;
+            --gold: #c59324;
+            --success-bg: #ecfdf3;
+            --success-text: #067647;
+            --warn-bg: #fffaeb;
+            --warn-text: #b54708;
+            --danger: #b42318;
+            --radius: 16px;
+            --shadow-lg: 0 20px 45px rgba(17, 28, 78, 0.14);
+            --shadow-md: 0 8px 24px rgba(16, 24, 40, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Source Sans 3", sans-serif;
+            margin: 0;
+            color: var(--slate-900);
+            background:
+                radial-gradient(circle at 10% 5%, rgba(197, 147, 36, 0.12), transparent 25%),
+                radial-gradient(circle at 100% 15%, rgba(36, 52, 127, 0.12), transparent 30%),
+                var(--bg);
+            line-height: 1.45;
+        }
+
+        header {
+            position: relative;
+            overflow: hidden;
+            padding: 16px 24px 28px;
+            color: #fff;
+            text-align: center;
+            background: linear-gradient(135deg, var(--navy-900), #1f2f74 58%, #2f428f);
+            border-bottom: 4px solid rgba(197, 147, 36, 0.3);
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent 34%);
+        }
+
+        header img {
+            width: min(1250px, 94%);
+            height: clamp(220px, 37vw, 450px);
+            object-fit: cover;
+            border-radius: 14px;
+            margin: 0 auto 24px;
+            display: block;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+        }
+
+        header h1 {
+            font-family: "Montserrat", sans-serif;
+            font-size: clamp(30px, 5vw, 52px);
+            letter-spacing: 0.8px;
+            line-height: 1.05;
+            margin: 0 0 6px;
+            text-wrap: balance;
+        }
+
+        header p {
+            margin: 0;
+            font-size: clamp(16px, 1.6vw, 22px);
+            font-weight: 600;
+            color: #f1f4ff;
+        }
+
+        .usuario {
+            margin: 18px auto 0;
+            width: fit-content;
+            min-width: 320px;
+            text-align: left;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 10px 14px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.14);
+            backdrop-filter: blur(3px);
+            border: 1px solid rgba(255, 255, 255, 0.24);
+        }
+
+        .usuario code {
+            font-family: "Montserrat", sans-serif;
+            font-size: 15px;
+            color: #fff;
+            background: transparent;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px;
+            padding: 12px 14px;
+            background: rgba(31, 41, 55, 0.95);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-family: "Montserrat", sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 999px;
+            padding: 8px 14px;
+            transition: background-color 0.22s ease, transform 0.22s ease;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            text-decoration: none;
+            background-color: rgba(255, 255, 255, 0.14);
+            transform: translateY(-1px);
+        }
+
+        .nav-active {
+            background: rgba(197, 147, 36, 0.95);
+            color: #1f2937;
+            box-shadow: 0 5px 14px rgba(197, 147, 36, 0.34);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 26px auto 36px;
+            padding: 0 22px 20px;
+        }
+
+        section {
+            background: var(--surface);
+            margin-bottom: 24px;
+            border-radius: var(--radius);
+            padding: 26px;
+            border: 1px solid #e4e7ec;
+            box-shadow: var(--shadow-md);
+            animation: rise-in 0.48s ease both;
+        }
+
+        section:nth-of-type(2) {
+            animation-delay: 0.08s;
+        }
+
+        section:nth-of-type(3) {
+            animation-delay: 0.16s;
+        }
+
+        section:nth-of-type(4) {
+            animation-delay: 0.24s;
+        }
+
+        h2,
+        h3 {
+            margin: 0 0 14px;
+            color: var(--navy-900);
+            font-family: "Montserrat", sans-serif;
+            letter-spacing: 0.2px;
+            font-size: clamp(24px, 2.6vw, 34px);
+        }
+
+        #dash fieldset {
+            border: 1px solid #d0d5dd;
+            border-radius: 14px;
+            padding: 18px;
+            display: grid;
+            gap: 10px;
+            background: linear-gradient(180deg, #ffffff, #fbfcff);
+        }
+
+        legend {
+            font-family: "Montserrat", sans-serif;
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--navy-900);
+            padding: 0 8px;
+        }
+
+        #dash p {
+            margin: 0;
+            font-size: 18px;
+            color: var(--slate-700);
+            padding: 8px 10px;
+            border-radius: 8px;
+            background: #f8f9fd;
+            border: 1px solid #edf0f5;
+        }
+
+        #dash strong {
+            color: var(--slate-900);
+        }
+
+        details {
+            margin-bottom: 12px;
+            border-radius: 12px;
+            border: 1px solid #e4e7ec;
+            background-color: #fafbff;
+            padding: 2px 12px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        details[open] {
+            border-color: #c8d1ff;
+            box-shadow: 0 6px 14px rgba(36, 52, 127, 0.08);
+            background: #fff;
+        }
+
+        details summary {
+            cursor: pointer;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            color: #1d2f6f;
+            padding: 14px 6px;
+        }
+
+        details ul {
+            margin: 0 0 14px 22px;
+            color: var(--slate-700);
+            font-size: 16px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 190px 1fr;
+            gap: 14px 18px;
+            align-items: center;
+            background: #f8faff;
+            border: 1px solid #e7ecff;
+            border-radius: 14px;
+            padding: 18px;
+        }
+
+        label {
+            color: #1a2662;
+            font-family: "Montserrat", sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        select,
+        input[type="date"],
+        input[type="time"],
+        .search-box {
+            width: 100%;
+            font-family: "Source Sans 3", sans-serif;
+            font-size: 16px;
+            padding: 11px 12px;
+            border-radius: 10px;
+            border: 1px solid #c9d0dc;
+            background-color: #fff;
+            color: var(--slate-900);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        select:focus,
+        input[type="date"]:focus,
+        input[type="time"]:focus,
+        .search-box:focus {
+            outline: none;
+            border-color: #3b5edb;
+            box-shadow: 0 0 0 4px rgba(59, 94, 219, 0.16);
+        }
+
+        button[type="submit"] {
+            grid-column: 1 / -1;
+            justify-self: center;
+            border: none;
+            border-radius: 999px;
+            padding: 12px 24px;
+            font-family: "Montserrat", sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(90deg, #1f2f74, #3048a0);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+            box-shadow: 0 8px 18px rgba(31, 47, 116, 0.26);
+        }
+
+        button[type="submit"]:hover,
+        button[type="submit"]:focus {
+            transform: translateY(-1px);
+            filter: brightness(1.03);
+            box-shadow: 0 10px 24px rgba(31, 47, 116, 0.3);
+        }
+
+        .search-box {
+            margin: 4px 0 14px;
+        }
+
+        .historial-toolbar {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .toolbar-button {
+            border: 1px solid #c9d0dc;
+            background: #fff;
+            color: var(--navy-900);
+            font-family: "Montserrat", sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 999px;
+            padding: 8px 14px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .toolbar-button:hover,
+        .toolbar-button:focus {
+            background-color: #eef2ff;
+            transform: translateY(-1px);
+        }
+
+        .reservas-list {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0;
+            display: grid;
+            gap: 12px;
+        }
+
+        .reserva-item {
+            border: 1px solid #e4e7ec;
+            border-radius: 12px;
+            background: #fff;
+            padding: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .reserva-main {
+            display: grid;
+            gap: 3px;
+            color: var(--slate-700);
+            font-size: 15px;
+        }
+
+        .reserva-main strong {
+            color: var(--slate-900);
+            font-family: "Montserrat", sans-serif;
+            font-size: 15px;
+        }
+
+        .reserva-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .reserva-btn {
+            border: none;
+            border-radius: 8px;
+            padding: 7px 12px;
+            font-family: "Montserrat", sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .reserva-btn.editar {
+            background: #e0e9ff;
+            color: #1d3f8f;
+        }
+
+        .reserva-btn.cancelar {
+            background: #ffe4e8;
+            color: #b42318;
+        }
+
+        .empty-message {
+            margin: 12px 0 0;
+            border: 1px dashed #c9d0dc;
+            border-radius: 10px;
+            padding: 12px;
+            color: var(--slate-500);
+            text-align: center;
+            background: #fcfcfd;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid #e4e7ec;
+            background: #fff;
+        }
+
+        caption {
+            caption-side: top;
+            padding: 0 0 10px;
+            color: var(--slate-700);
+            font-size: 14px;
+        }
+
+        th {
+            background: linear-gradient(180deg, #d9a62f, var(--gold));
+            color: #fff;
+            font-family: "Montserrat", sans-serif;
+            font-size: 14px;
+            letter-spacing: 0.2px;
+            padding: 12px;
+        }
+
+        td {
+            text-align: center;
+            padding: 12px;
+            border-top: 1px solid #edf0f5;
+            color: var(--slate-900);
+            font-size: 16px;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9fbff;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .input-error {
+            border-color: var(--danger);
+            background-color: #fff4f4;
+        }
+
+        .status-box {
+            margin-top: 14px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .status-box.ok {
+            background-color: var(--success-bg);
+            color: var(--success-text);
+            border: 1px solid #abefc6;
+        }
+
+        .status-box.warn {
+            background-color: var(--warn-bg);
+            color: var(--warn-text);
+            border: 1px solid #fedf89;
+        }
+
+        details.opened {
+            outline: 2px solid rgba(59, 94, 219, 0.2);
+        }
+
+        footer {
+            margin-top: 14px;
+            padding: 18px 14px;
+            text-align: center;
+            font-size: 14px;
+            color: #f8fafc;
+            background: linear-gradient(180deg, #232b3b, #151b27);
+            border-top: 3px solid rgba(197, 147, 36, 0.7);
+        }
+
+        @keyframes rise-in {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .usuario {
+                min-width: 0;
+                width: 100%;
+                max-width: 460px;
+                font-size: 15px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            label {
+                margin-top: 6px;
+            }
+
+            button[type="submit"] {
+                width: 100%;
+            }
+
+            .historial-toolbar {
+                align-items: stretch;
+            }
+
+            .toolbar-button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 640px) {
+            header {
+                padding: 14px 12px 20px;
+            }
+
+            header img {
+                width: 100%;
+                border-radius: 12px;
+            }
+
+            nav {
+                justify-content: flex-start;
+                overflow-x: auto;
+            }
+
+            main {
+                padding: 0 12px 14px;
+            }
+
+            section {
+                padding: 18px 14px;
+                border-radius: 12px;
+            }
+
+            #dash p {
+                font-size: 16px;
+            }
+        }
