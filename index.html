@@ -1,167 +1,477 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Espacios | Universidad Rafael Landívar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --navy-900: #111c4e;
+            --navy-700: #24347f;
+            --slate-900: #1f2937;
+            --slate-700: #475467;
+            --slate-500: #667085;
+            --slate-200: #d0d5dd;
+            --surface: #ffffff;
+            --bg: #f5f7fb;
+            --gold: #c59324;
+            --success-bg: #ecfdf3;
+            --success-text: #067647;
+            --warn-bg: #fffaeb;
+            --warn-text: #b54708;
+            --danger: #b42318;
+            --radius: 16px;
+            --shadow-lg: 0 20px 45px rgba(17, 28, 78, 0.14);
+            --shadow-md: 0 8px 24px rgba(16, 24, 40, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: "Source Sans 3", sans-serif;
             margin: 0;
-            background-color: #f4f6f9;
-            color: #333;
+            color: var(--slate-900);
+            background:
+                radial-gradient(circle at 10% 5%, rgba(197, 147, 36, 0.12), transparent 25%),
+                radial-gradient(circle at 100% 15%, rgba(36, 52, 127, 0.12), transparent 30%),
+                var(--bg);
+            line-height: 1.45;
         }
 
         header {
-            background-color: #1a1a54;
-            color: white;
-            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            padding: 16px 24px 28px;
+            color: #fff;
             text-align: center;
+            background: linear-gradient(135deg, var(--navy-900), #1f2f74 58%, #2f428f);
+            border-bottom: 4px solid rgba(197, 147, 36, 0.3);
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent 34%);
         }
 
         header img {
-            max-width: 90%;
-            height: auto;
-            border-radius: 6px;
-            margin-bottom: 10px;
+            width: min(1250px, 94%);
+            height: clamp(220px, 37vw, 450px);
+            object-fit: cover;
+            border-radius: 14px;
+            margin: 0 auto 24px;
+            display: block;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+        }
+
+        header h1 {
+            font-family: "Montserrat", sans-serif;
+            font-size: clamp(30px, 5vw, 52px);
+            letter-spacing: 0.8px;
+            line-height: 1.05;
+            margin: 0 0 6px;
+            text-wrap: balance;
+        }
+
+        header p {
+            margin: 0;
+            font-size: clamp(16px, 1.6vw, 22px);
+            font-weight: 600;
+            color: #f1f4ff;
+        }
+
+        .usuario {
+            margin: 18px auto 0;
+            width: fit-content;
+            min-width: 320px;
+            text-align: left;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 10px 14px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.14);
+            backdrop-filter: blur(3px);
+            border: 1px solid rgba(255, 255, 255, 0.24);
+        }
+
+        .usuario code {
+            font-family: "Montserrat", sans-serif;
+            font-size: 15px;
+            color: #fff;
+            background: transparent;
         }
 
         nav {
-            background-color: #646462;
-            padding: 12px;
-            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px;
+            padding: 12px 14px;
+            background: rgba(31, 41, 55, 0.95);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         nav a {
-            color: white;
+            color: #fff;
             text-decoration: none;
-            margin: 0 10px;
-            font-weight: bold;
+            font-family: "Montserrat", sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 999px;
+            padding: 8px 14px;
+            transition: background-color 0.22s ease, transform 0.22s ease;
         }
 
-        nav a:hover {
-            text-decoration: underline;
+        nav a:hover,
+        nav a:focus {
+            text-decoration: none;
+            background-color: rgba(255, 255, 255, 0.14);
+            transform: translateY(-1px);
+        }
+
+        .nav-active {
+            background: rgba(197, 147, 36, 0.95);
+            color: #1f2937;
+            box-shadow: 0 5px 14px rgba(197, 147, 36, 0.34);
         }
 
         main {
-            padding: 20px;
-            max-width: 1100px;
-            margin: auto;
+            max-width: 1200px;
+            margin: 26px auto 36px;
+            padding: 0 22px 20px;
         }
 
         section {
-            background-color: white;
-            padding: 20px;
-            margin-bottom: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            background: var(--surface);
+            margin-bottom: 24px;
+            border-radius: var(--radius);
+            padding: 26px;
+            border: 1px solid #e4e7ec;
+            box-shadow: var(--shadow-md);
+            animation: rise-in 0.48s ease both;
         }
 
+        section:nth-of-type(2) {
+            animation-delay: 0.08s;
+        }
+
+        section:nth-of-type(3) {
+            animation-delay: 0.16s;
+        }
+
+        section:nth-of-type(4) {
+            animation-delay: 0.24s;
+        }
+
+        h2,
         h3 {
-            color: #1a1a54;
-            margin-top: 0;
+            margin: 0 0 14px;
+            color: var(--navy-900);
+            font-family: "Montserrat", sans-serif;
+            letter-spacing: 0.2px;
+            font-size: clamp(24px, 2.6vw, 34px);
         }
 
-        fieldset {
-            border: 1px solid #ccc;
-            padding: 15px;
-            border-radius: 6px;
+        #dash fieldset {
+            border: 1px solid #d0d5dd;
+            border-radius: 14px;
+            padding: 18px;
+            display: grid;
+            gap: 10px;
+            background: linear-gradient(180deg, #ffffff, #fbfcff);
         }
 
         legend {
-            font-weight: bold;
-            color: #1a1a54;
+            font-family: "Montserrat", sans-serif;
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--navy-900);
+            padding: 0 8px;
+        }
+
+        #dash p {
+            margin: 0;
+            font-size: 18px;
+            color: var(--slate-700);
+            padding: 8px 10px;
+            border-radius: 8px;
+            background: #f8f9fd;
+            border: 1px solid #edf0f5;
+        }
+
+        #dash strong {
+            color: var(--slate-900);
         }
 
         details {
-            background-color: #f9f9f9;
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            cursor: pointer;
+            margin-bottom: 12px;
+            border-radius: 12px;
+            border: 1px solid #e4e7ec;
+            background-color: #fafbff;
+            padding: 2px 12px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        details[open] {
+            border-color: #c8d1ff;
+            box-shadow: 0 6px 14px rgba(36, 52, 127, 0.08);
+            background: #fff;
         }
 
         details summary {
-            font-weight: bold;
-            color: #333;
+            cursor: pointer;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            color: #1d2f6f;
+            padding: 14px 6px;
+        }
+
+        details ul {
+            margin: 0 0 14px 22px;
+            color: var(--slate-700);
+            font-size: 16px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 190px 1fr;
+            gap: 14px 18px;
+            align-items: center;
+            background: #f8faff;
+            border: 1px solid #e7ecff;
+            border-radius: 14px;
+            padding: 18px;
+        }
+
+        label {
+            color: #1a2662;
+            font-family: "Montserrat", sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        select,
+        input[type="date"],
+        input[type="time"],
+        .search-box {
+            width: 100%;
+            font-family: "Source Sans 3", sans-serif;
+            font-size: 16px;
+            padding: 11px 12px;
+            border-radius: 10px;
+            border: 1px solid #c9d0dc;
+            background-color: #fff;
+            color: var(--slate-900);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        select:focus,
+        input[type="date"]:focus,
+        input[type="time"]:focus,
+        .search-box:focus {
+            outline: none;
+            border-color: #3b5edb;
+            box-shadow: 0 0 0 4px rgba(59, 94, 219, 0.16);
+        }
+
+        button[type="submit"] {
+            grid-column: 1 / -1;
+            justify-self: center;
+            border: none;
+            border-radius: 999px;
+            padding: 12px 24px;
+            font-family: "Montserrat", sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(90deg, #1f2f74, #3048a0);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+            box-shadow: 0 8px 18px rgba(31, 47, 116, 0.26);
+        }
+
+        button[type="submit"]:hover,
+        button[type="submit"]:focus {
+            transform: translateY(-1px);
+            filter: brightness(1.03);
+            box-shadow: 0 10px 24px rgba(31, 47, 116, 0.3);
+        }
+
+        .search-box {
+            margin: 4px 0 14px;
         }
 
         table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid #e4e7ec;
+            background: #fff;
         }
 
-        table th {
-            background-color: #f0bf2d;
-            color: white;
-            padding: 10px;
+        caption {
+            caption-side: top;
+            padding: 0 0 10px;
+            color: var(--slate-700);
+            font-size: 14px;
         }
 
-        table td {
-            padding: 10px;
-            border: 1px solid #ddd;
+        th {
+            background: linear-gradient(180deg, #d9a62f, var(--gold));
+            color: #fff;
+            font-family: "Montserrat", sans-serif;
+            font-size: 14px;
+            letter-spacing: 0.2px;
+            padding: 12px;
+        }
+
+        td {
             text-align: center;
+            padding: 12px;
+            border-top: 1px solid #edf0f5;
+            color: var(--slate-900);
+            font-size: 16px;
         }
 
-        form table td {
-            padding: 8px;
+        tbody tr:nth-child(even) {
+            background-color: #f9fbff;
         }
 
-        select, input[type="date"], input[type="time"] {
-            padding: 6px;
-            width: 100%;
+        .hidden {
+            display: none;
         }
 
-        input[type="submit"] {
-            background-color: #1a1a54;
-            color: white;
-            border: none;
-            padding: 10px 18px; 
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
+        .input-error {
+            border-color: var(--danger);
+            background-color: #fff4f4;
         }
 
-        input[type="submit"]:hover {
-            background-color: #1a1a54;
+        .status-box {
+            margin-top: 14px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .status-box.ok {
+            background-color: var(--success-bg);
+            color: var(--success-text);
+            border: 1px solid #abefc6;
+        }
+
+        .status-box.warn {
+            background-color: var(--warn-bg);
+            color: var(--warn-text);
+            border: 1px solid #fedf89;
+        }
+
+        details.opened {
+            outline: 2px solid rgba(59, 94, 219, 0.2);
         }
 
         footer {
-            background-color: #2e2e2e;
-            color: white;
+            margin-top: 14px;
+            padding: 18px 14px;
             text-align: center;
-            padding: 15px;
             font-size: 14px;
+            color: #f8fafc;
+            background: linear-gradient(180deg, #232b3b, #151b27);
+            border-top: 3px solid rgba(197, 147, 36, 0.7);
         }
 
-        .usuario {
-            text-align: right;
-            font-size: 14px;
-            margin-top: 10px;
+        @keyframes rise-in {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        header h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 36px;
-    letter-spacing: 1px;
-    margin: 10px 0;
-}
+        @media (max-width: 900px) {
+            .usuario {
+                min-width: 0;
+                width: 100%;
+                max-width: 460px;
+                font-size: 15px;
+            }
 
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            label {
+                margin-top: 6px;
+            }
+
+            button[type="submit"] {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 640px) {
+            header {
+                padding: 14px 12px 20px;
+            }
+
+            header img {
+                width: 100%;
+                border-radius: 12px;
+            }
+
+            nav {
+                justify-content: flex-start;
+                overflow-x: auto;
+            }
+
+            main {
+                padding: 0 12px 14px;
+            }
+
+            section {
+                padding: 18px 14px;
+                border-radius: 12px;
+            }
+
+            #dash p {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 
 <body>
-
 <header>
     <img src="campus-quetzaltenango-1600x651.jpg" alt="Campus Quetzaltenango">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 
-    <h1>SIISTEMA DE CONTROL DE AULAS (SCA)</h1>
-    <p><strong>Universidad Rafael Landívar – Campus Quetzaltenango</strong></p>
+    <h1>SISTEMA DE CONTROL DE AULAS (SCA)</h1>
+    <p><strong>Universidad Rafael Landivar - Campus Quetzaltenango</strong></p>
 
     <div class="usuario">
         Usuario: <code>admin_estudiante_2024</code><br>
-        Estado: Conectado vía Portal Académico
+        Estado: Conectado via Portal Academico
     </div>
 </header>
 
@@ -170,11 +480,10 @@
     <a href="#aulas">Ver Aulas</a>
     <a href="#reserva">Reservar Aula</a>
     <a href="#historial">Mis Reservas</a>
-    <a href="#admin">Administración</a>
+    <a href="#admin">Administracion</a>
 </nav>
 
 <main>
-
     <section id="dash">
         <fieldset>
             <legend>Estado del Sistema</legend>
@@ -185,10 +494,10 @@
     </section>
 
     <section id="aulas">
-        <h3>Catálogo de Espacios</h3>
+        <h2>Catalogo de Espacios</h2>
 
         <details>
-            <summary>Aula B-201 (Teórica) – Disponible</summary>
+            <summary>Aula B-201 (Teorica) - Disponible</summary>
             <ul>
                 <li>Capacidad: 50 personas</li>
                 <li>Equipamiento: Proyector, Aire acondicionado</li>
@@ -196,7 +505,7 @@
         </details>
 
         <details>
-            <summary>Laboratorio de Química Central – Ocupado</summary>
+            <summary>Laboratorio de Quimica Central - Ocupado</summary>
             <ul>
                 <li>Capacidad: 20 personas</li>
                 <li>Equipamiento: Extractores, Mecheros, Gas</li>
@@ -204,7 +513,7 @@
         </details>
 
         <details>
-            <summary>Auditorio de Artes – Disponible</summary>
+            <summary>Auditorio de Artes - Disponible</summary>
             <ul>
                 <li>Capacidad: 120 personas</li>
                 <li>Equipamiento: Audio profesional, Luces LED</li>
@@ -213,66 +522,295 @@
     </section>
 
     <section id="reserva">
-        <h3>Solicitud de Reserva de Aula</h3>
+        <h2>Solicitud de Reserva de Aula</h2>
 
-        <form>
-            <table>
-                <tr>
-                    <td>Espacio:</td>
-                    <td>
-                        <select>
-                            <option>Aula B-201</option>
-                            <option>Aula B-202</option>
-                            <option>Laboratorio de Química</option>
-                        </select>
-                    </td>
-                </tr>
+        <form action="#" method="post">
+            <div class="form-grid">
+                <label for="espacio">Espacio:</label>
+                <select id="espacio" name="espacio" required>
+                    <option value="Aula B-201">Aula B-201</option>
+                    <option value="Aula B-202">Aula B-202</option>
+                    <option value="Laboratorio de Quimica">Laboratorio de Quimica</option>
+                </select>
 
-                <tr>
-                    <td>Fecha:</td>
-                    <td><input type="date"></td>
-                </tr>
+                <label for="fecha">Fecha:</label>
+                <input id="fecha" name="fecha" type="date" required>
 
-                <tr>
-                    <td>Hora inicio:</td>
-                    <td><input type="time"></td>
-                </tr>
+                <label for="hora_inicio">Hora inicio:</label>
+                <input id="hora_inicio" name="hora_inicio" type="time" required>
 
-                <tr>
-                    <td colspan="2" style="text-align:center">
-                        <input type="submit" value="Registrar Reserva">
-                    </td>
-                </tr>
-            </table>
+                <button type="submit">Registrar Reserva</button>
+            </div>
         </form>
     </section>
 
     <section id="historial">
-        <h3>Historial de Reservas</h3>
+        <h2>Historial de Reservas</h2>
 
         <table>
-            <tr>
-                <th>ID</th>
-                <th>Aula</th>
-                <th>Fecha</th>
-                <th>Horario</th>
-            </tr>
-            <tr>
-                <td>#8821</td>
-                <td>Aula B-201</td>
-                <td>25/01/2026</td>
-                <td>08:00 - 10:00</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Aula</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Horario</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#8821</td>
+                    <td>Aula B-201</td>
+                    <td>25/01/2026</td>
+                    <td>08:00 - 10:00</td>
+                </tr>
+            </tbody>
         </table>
     </section>
 
+    <section id="admin">
+        <h2>Administracion</h2>
+        <p>Modulo de administracion disponible para coordinadores y personal autorizado.</p>
+    </section>
 </main>
 
 <footer>
-    © 2026 Dirección de Tecnologías de la Información<br>
-    Unidad de Gestión de Infraestructura Universitaria<br>
-    <em>Proyecto Académico – Programación Web </em>
+    &copy; 2026 Direccion de Tecnologias de la Informacion<br>
+    Unidad de Gestion de Infraestructura Universitaria<br>
+    <em>Proyecto Academico - Programacion Web</em>
 </footer>
+<script>
+    (function () {
+        "use strict";
 
+        const state = {
+            aulasServicio: 24,
+            disponibilidadInmediata: 8,
+            reservas: [
+                {
+                    id: 8821,
+                    espacio: "Aula B-201",
+                    fecha: "2026-01-25",
+                    horaInicio: "08:00",
+                    horaFin: "10:00"
+                }
+            ],
+            filtro: "",
+            seccionActiva: "dash",
+            adminVisible: false,
+            nextId: 8822
+        };
+
+        const dashSection = document.getElementById("dash");
+        const reservaForm = document.querySelector("#reserva form");
+        const espacioField = document.getElementById("espacio");
+        const fechaField = document.getElementById("fecha");
+        const horaInicioField = document.getElementById("hora_inicio");
+        const historialSection = document.getElementById("historial");
+        const historialBody = document.querySelector("#historial tbody");
+        const adminSection = document.getElementById("admin");
+        const navLinks = document.querySelectorAll("nav a");
+        const detailsList = document.querySelectorAll("#aulas details");
+        const headerTitle = document.querySelector("header h1");
+
+        const dashParagraphs = dashSection.querySelectorAll("p");
+        const disponibilidadText = dashParagraphs[1];
+        const reservasActivasText = dashParagraphs[2];
+
+        const estadoBox = document.createElement("div");
+        estadoBox.className = "status-box hidden";
+        reservaForm.appendChild(estadoBox);
+
+        const filtroInput = document.createElement("input");
+        filtroInput.type = "text";
+        filtroInput.className = "search-box";
+        filtroInput.placeholder = "Filtrar historial por aula o fecha";
+        filtroInput.setAttribute("aria-label", "Filtrar historial");
+        historialSection.insertBefore(filtroInput, historialSection.querySelector("table"));
+
+        headerTitle.setAttribute("title", "Sistema institucional de reservas");
+
+        const tableCaption = document.createElement("caption");
+        tableCaption.textContent = "Reservas registradas por el usuario actual";
+        historialSection.querySelector("table").prepend(tableCaption);
+
+        adminSection.classList.add("hidden");
+
+        function toDisplayDate(yyyyMmDd) {
+            const [year, month, day] = yyyyMmDd.split("-");
+            return day + "/" + month + "/" + year;
+        }
+
+        function buildRow(reserva) {
+            const row = document.createElement("tr");
+            row.innerHTML =
+                "<td>#" + reserva.id + "</td>" +
+                "<td>" + reserva.espacio + "</td>" +
+                "<td>" + toDisplayDate(reserva.fecha) + "</td>" +
+                "<td>" + reserva.horaInicio + " - " + reserva.horaFin + "</td>";
+            return row;
+        }
+
+        function renderDashboard() {
+            const ocupadas = state.reservas.length;
+            const libres = Math.max(state.aulasServicio - ocupadas, 0);
+            state.disponibilidadInmediata = libres;
+
+            disponibilidadText.innerHTML = "<strong>Disponibilidad inmediata:</strong> " + libres + " aulas libres";
+            reservasActivasText.innerHTML = "<strong>Reservas activas:</strong> " + ocupadas + " aulas ocupadas";
+        }
+
+        function renderHistorial() {
+            historialBody.innerHTML = "";
+            const filtro = state.filtro.trim().toLowerCase();
+            const items = state.reservas.filter(function (reserva) {
+                if (!filtro) {
+                    return true;
+                }
+                const texto = (reserva.espacio + " " + reserva.fecha).toLowerCase();
+                return texto.includes(filtro);
+            });
+
+            if (items.length === 0) {
+                const emptyRow = document.createElement("tr");
+                emptyRow.innerHTML = "<td colspan=\"4\">No hay resultados para el filtro actual.</td>";
+                historialBody.appendChild(emptyRow);
+                return;
+            }
+
+            items.forEach(function (reserva) {
+                historialBody.appendChild(buildRow(reserva));
+            });
+        }
+
+        function setStatus(message, type) {
+            estadoBox.textContent = message;
+            estadoBox.classList.remove("hidden", "ok", "warn");
+            estadoBox.classList.add(type);
+        }
+
+        function clearStatus() {
+            estadoBox.classList.add("hidden");
+            estadoBox.textContent = "";
+            estadoBox.classList.remove("ok", "warn");
+        }
+
+        function markActiveNav(hash) {
+            const target = hash.replace("#", "") || "dash";
+            state.seccionActiva = target;
+            navLinks.forEach(function (link) {
+                const isCurrent = link.getAttribute("href") === "#" + target;
+                link.classList.toggle("nav-active", isCurrent);
+            });
+        }
+
+        function reservaExiste(espacio, fecha, horaInicio, horaFin) {
+            return state.reservas.some(function (reserva) {
+                if (reserva.espacio !== espacio || reserva.fecha !== fecha) {
+                    return false;
+                }
+                return horaInicio < reserva.horaFin && reserva.horaInicio < horaFin;
+            });
+        }
+
+        function computeHoraFin(horaInicio) {
+            const [h, m] = horaInicio.split(":").map(Number);
+            const date = new Date(2000, 0, 1, h, m, 0, 0);
+            date.setHours(date.getHours() + 2);
+            return String(date.getHours()).padStart(2, "0") + ":" + String(date.getMinutes()).padStart(2, "0");
+        }
+
+        function validateFields() {
+            let valid = true;
+            [fechaField, horaInicioField].forEach(function (field) {
+                if (!field.value) {
+                    field.classList.add("input-error");
+                    valid = false;
+                } else {
+                    field.classList.remove("input-error");
+                }
+            });
+            return valid;
+        }
+
+        navLinks.forEach(function (link) {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+                const targetId = link.getAttribute("href");
+                const section = document.querySelector(targetId);
+                if (section) {
+                    if (targetId === "#admin") {
+                        state.adminVisible = true;
+                        adminSection.classList.remove("hidden");
+                    }
+                    markActiveNav(targetId);
+                    section.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            });
+        });
+
+        detailsList.forEach(function (item) {
+            item.addEventListener("toggle", function () {
+                item.classList.toggle("opened", item.open);
+                if (item.open) {
+                    detailsList.forEach(function (other) {
+                        if (other !== item) {
+                            other.open = false;
+                            other.classList.remove("opened");
+                        }
+                    });
+                }
+            });
+        });
+
+        filtroInput.addEventListener("input", function () {
+            state.filtro = filtroInput.value;
+            renderHistorial();
+        });
+
+        [fechaField, horaInicioField].forEach(function (field) {
+            field.addEventListener("input", function () {
+                field.classList.remove("input-error");
+                clearStatus();
+            });
+        });
+
+        reservaForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            if (!validateFields()) {
+                setStatus("Completa fecha y hora para registrar la reserva.", "warn");
+                return;
+            }
+
+            const espacio = espacioField.value;
+            const fecha = fechaField.value;
+            const horaInicio = horaInicioField.value;
+            const horaFin = computeHoraFin(horaInicio);
+
+            if (reservaExiste(espacio, fecha, horaInicio, horaFin)) {
+                setStatus("Conflicto de horario: el espacio ya esta reservado en ese bloque.", "warn");
+                return;
+            }
+
+            state.reservas.unshift({
+                id: state.nextId,
+                espacio: espacio,
+                fecha: fecha,
+                horaInicio: horaInicio,
+                horaFin: horaFin
+            });
+            state.nextId += 1;
+
+            renderHistorial();
+            renderDashboard();
+            setStatus("Reserva creada con exito. ID asignado: #" + (state.nextId - 1), "ok");
+            reservaForm.reset();
+        });
+
+        markActiveNav("#dash");
+        renderDashboard();
+        renderHistorial();
+    }());
+</script>
 </body>
 </html>
